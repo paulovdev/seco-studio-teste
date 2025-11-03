@@ -72,10 +72,7 @@ const Works = () => {
   }, []);
 
   return (
-    <div
-      className="h-[calc(100%+600px)] bg-s py-2 pl-2 pr-2 max-md:pr-0"
-      ref={ref}
-    >
+    <div className="h-[calc(600px+16px)] bg-s py-2 pl-2 pr-2 max-md:pr-0" ref={ref}>
       <motion.div variants={opacityAnim} animate={inView ? "show" : "hidden"}>
         <Swiper
           autoplay={{ delay: 10000 }}
