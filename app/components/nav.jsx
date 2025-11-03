@@ -10,8 +10,8 @@ const Nav = () => {
 
   return (
     <>
-      <header className="w-full z-100">
-        <nav className="fixed top-0 right-0 left-0 p-2 px-3 backdrop-blur-[6px] border-b border-black flex items-center justify-between">
+      <header className="w-full">
+        <nav className="fixed z-100 top-0 right-0 left-0 p-2 px-3 backdrop-blur-[6px] border-b border-black flex items-center justify-between">
           <Link
             href={"/"}
             className="text-p text-[1em] font-medium tracking-[-0.03em]"

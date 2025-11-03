@@ -1,5 +1,6 @@
 import "./globals.css";
 import Nav from "./components/nav";
+import { ViewTransitions } from "next-view-transitions";
 
 export const metadata = {
   title: "teste Studio",
@@ -8,12 +9,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className=" antialiase">
-        <Nav />
+    <ViewTransitions>
+      <html lang="en">
+        <body className=" antialiase">
+          <Nav />
 
-        {children}
-      </body>
-    </html>
+          {children}
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

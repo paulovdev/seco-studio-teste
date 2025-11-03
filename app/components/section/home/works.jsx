@@ -10,9 +10,38 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { useInView } from "react-intersection-observer";
-import Link from "next/link";
+ 
 import Image from "next/image";
+import { useTransitionRouter } from "next-view-transitions";
+import NextLink from "../../common/next-link";
 
+function slideInOut() {
+  document.documentElement.animate(
+    [
+      { opacity: 1, transform: "translateY(0)" },
+      { opacity: 0.2, transform: "translateY(-35%)" },
+    ],
+    {
+      duration: 1200,
+      easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+      fill: "forwards",
+      pseudoElement: "::view-transition-old(root)",
+    }
+  );
+
+  document.documentElement.animate(
+    [
+      { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" },
+      { clipPath: "polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%)" },
+    ],
+    {
+      duration: 1200,
+      easing: "cubic-bezier(0.87, 0, 0.13, 1)",
+      fill: "forwards",
+      pseudoElement: "::view-transition-new(root)",
+    }
+  );
+}
 const opacityAnim = {
   hidden: { opacity: 0 },
   show: { opacity: 1, transition: { duration: 1, ease: "linear" } },
@@ -29,15 +58,16 @@ const urlFor = (source) =>
     ? createImageUrlBuilder({ projectId, dataset }).image(source)
     : null;
 
-const Card = ({ slug, img, title }) => {
+const Card = ({ slug, img, title }) => {  
+  const router = useTransitionRouter();
   return (
     <div className="w-full h-[600px] p-0.5 transition-all duration-500 cubic-bezier(0.33, 1, 0.68, 1)">
       <motion.figure className="relative w-full h-full overflow-hidden">
         {img && (
           <Image
             src={img}
-            width={500}
-            height={500}
+            width={2500}
+            height={2500}
             alt={title || ""}
             className="w-full h-full object-cover"
           />
@@ -46,12 +76,13 @@ const Card = ({ slug, img, title }) => {
           <p className="text-s text-[0.875em] font-medium tracking-[-0.03em] uppercase">
             {title}
           </p>
-          <Link
-            href={`/works/${slug?.current}`}
-            className="text-s text-[0.875em] font-medium tracking-[-0.03em] uppercase"
-          >
-            VIEW
-          </Link>
+            <NextLink
+                  href={`/works/${slug?.current}`}
+                  className="text-s text-[0.875em] font-medium tracking-[-0.03em] uppercase"
+                >
+                 VIEW
+                </NextLink>
+          
         </div>
       </motion.figure>
     </div>
@@ -72,7 +103,10 @@ const Works = () => {
   }, []);
 
   return (
-    <div className="h-[calc(600px+16px)] bg-s py-2 pl-2 pr-2 max-md:pr-0" ref={ref}>
+    <div
+      className="h-[calc(600px+16px)] bg-s py-2 pl-2 pr-2 max-md:pr-0"
+      ref={ref}
+    >
       <motion.div variants={opacityAnim} animate={inView ? "show" : "hidden"}>
         <Swiper
           autoplay={{ delay: 10000 }}
