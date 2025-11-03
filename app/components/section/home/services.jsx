@@ -3,8 +3,8 @@ import React from "react";
 
 const Services = () => {
   return (
-    <section className="h-screen flex items-center justify-between">
-      <div className="flex-2 h-screen flex items-center justify-center">
+    <section className="h-screen flex items-center justify-between max-lg:flex-col">
+      <div className="flex-2 h-screen flex items-center justify-center max-lg:pb-10">
         <figure className="size-full overflow-hidden">
           <Image
             src={"/services.jpg"}
@@ -16,8 +16,8 @@ const Services = () => {
         </figure>
       </div>
       <div className="flex-2 h-screen flex flex-col items-center justify-center">
-        <div className="px-2 py-4 h-full flex items-start justify-start">
-          <p className="text-p text-[1.2em] font-medium tracking-[-0.03em] leading-[1.1]">
+        <div className="px-2 py-4 h-full flex items-start justify-start max-lg:pb-25">
+          <p className="text-p text-[1.2em] font-medium tracking-[-0.05em] leading-[1.1]">
             Great design transforms a business, it doesn’t just decorate it. We
             work in partnership with you to learn about your vision and
             understand your goals so that together, we can create one-of-a-kind
@@ -25,7 +25,7 @@ const Services = () => {
           </p>
         </div>
         <div className="size-full flex items-end justify-end">
-          <div className="p-5 w-full grid grid-cols-4">
+          <div className="p-5 w-full grid grid-cols-4 max-lg:grid-cols-1 max-lg:p-2">
             <ul className="flex flex-col items-start gap-4 col-start-3 col-span-full">
               <li className="flex flex-col items-start">
                 <h3 className="mb-4 text-p text-[1.3em] font-normal tracking-[-0.04em] uppercase">
