@@ -6,6 +6,7 @@ import Hero from "./components/section/home/hero";
 import Lenis from "lenis";
 import PreLoader from "./loaders/pre-loader";
 import { useLoadingStore } from "./store/useLoadingStore";
+import Services from "./components/section/home/services";
 
 const Home = () => {
   const { loading, setLoading } = useLoadingStore();
@@ -71,6 +72,7 @@ const Home = () => {
       <div className="">
         <Hero />
         <Works />
+        <Services />
       </div>
     </>
   );
